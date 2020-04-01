@@ -1,0 +1,74 @@
+.car-fleet{
+    display: flex;
+    flex-direction:column;
+}
+
+.car{
+    display: flex;
+    flex-direction:column;
+    margin:20px 0px 20px 0px;
+    padding:10px;
+    background-color: white;
+}
+
+.car-number-remove{
+    display: flex;
+    flex-direction:row;
+    justify-content:space-between;
+    padding-left:20px;
+}
+
+.start-stop-button{
+    padding-left:40px;
+}
+
+.start-stop-button>button{
+    background-color: green;
+    height:30px;
+    width:50px;
+}
+
+.status{
+    padding-left:40px;
+}
+
+.accelerator-brake{
+    display: flex;
+    justify-content:space-between;
+    padding-left:40px;
+    padding-right:40px;
+}
+
+.accelerator-button{
+    color:royalblue;
+    border:1px solid blue;
+    background-color: white;
+    height:30px;
+    width:100px;
+}
+
+.accelerator-button:hover{
+    color:white;
+    background-color: royalblue;
+}
+
+.break-button{
+    color:red;
+    border:1px solid red;
+    background-color: white;
+    height:30px;
+    width:100px;
+}
+
+.break-button:hover{
+    color:white;
+    background-color: red;
+}
+
+.addCarButton{
+    color:white;
+    height:30px;
+    width:80px;
+    background-color: blue;
+    margin:10px;
+}

@@ -1,0 +1,67 @@
+
+*** creat component countries-app
+---fetch data
+state:
+    ListofCountries[]
+    ListOfCountriesForUI
+
+render(){
+    <header/>
+    <body/>
+        
+}
+
+
+    
+    --- creat component header
+    
+        ---creat component whereInTheWorld
+        props:countriesList
+         
+        ---creat component theme
+             state: light//dark
+             
+   
+   
+        ---creat component filterBar
+
+            ---creat component searchBar
+                props:
+                    countriesList
+            
+                state:
+                    serchedCountrieList:[]
+                
+                Methods:
+                    filterCountry
+                
+            
+            ---creat component  filterCotenents
+                props: 
+                    countriesList
+                
+                state:
+                    selected Contenents
+                    filteredCountriesList:[]
+                
+                method:
+                    filterListOfCountries
+            
+            
+        ---creat component countriesCardList
+            state:
+                
+                flag
+                population
+                Region
+                Capital
+    
+    
+        ---creat component country deatils
+                flag
+                ........
+                borderCountries:
+                
+                
+***props
+    --fetch data
