@@ -1,4 +1,9 @@
 import React from 'react'
+import tw from 'tailwind.macro'
+
+const Search=tw.input`
+  border-solid border-2 border-gray-600 hover:border-blue-600 w-56 text-xl p-1  
+`
 
 class SearchCountry extends React.Component{
     state={
@@ -8,17 +13,11 @@ class SearchCountry extends React.Component{
     onChangeSearchText=(event)=>{
         this.setState({searchText:event.target.value})
         this.props.searchName(event.target.value)
-        //this.onSubmitSearchText(event.target.value)
         
     }
-    /*
-    onSubmitSearchText=(text)=>{
-        this.props.search(text)
-    }
-    */
     render(){
         return(
-            <div><input type="text" className={`search ${this.props.theme}`} onChange={this.onChangeSearchText} placeholder="search country..."  /></div>
+                <Search className={this.props.theme} onChange={this.onChangeSearchText} placeholder="search country..."></Search>
             )
     }
 }

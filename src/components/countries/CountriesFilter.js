@@ -1,14 +1,17 @@
 import React from 'react'
 import SearchCountry from './searchCountry.js'
 import SearchRegion from './selectRegion.js'
+import tw from 'tailwind.macro';
+
+const Filter=tw.div`flex flex-row justify-between p-3`
 
 class CountriesFilterBar extends React.Component{
     render(){
         return(
-            <div className="filter-bar">
+            <Filter>
                <SearchCountry theme={this.props.theme} list={this.props.list} searchName={this.props.search}/>
                <SearchRegion theme={this.props.theme} list={this.props.list} region={this.props.region}/>
-            </div>
+            </Filter>
             );
     }
     

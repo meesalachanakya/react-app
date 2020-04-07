@@ -19,6 +19,9 @@ import {Link} from "react-router-dom";
             <li>
               <Link to="/countriesApp">Countries</Link>
             </li>
+            <li>
+              <Link to="/EmojiGame">EmojiGame</Link>
+            </li>
           </ul>
         </nav>
    )
