@@ -7,6 +7,6 @@ const counterStore = new CounterStore()
 //const todoList= new TodoList()
 
 export default {
-   counterStore
+  counterStore,
 }
  

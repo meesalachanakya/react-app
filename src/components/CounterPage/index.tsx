@@ -5,8 +5,14 @@ import {CounterApp,Input,Button,H1,Counter} from './styledComponents.js'
 import stores from '../../stores';
 const counterStore = stores.counterStore;
 
+type Props = {
+  initialCount: number
+}
+
 @observer
-class CounterPage extends Component {
+class CounterPage extends Component<Props> {
+  functionCalling
+
   handleIncrement = () => {
     if(!isNaN(counterStore.count)){
     counterStore.incrementCounter();
