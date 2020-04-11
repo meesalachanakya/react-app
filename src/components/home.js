@@ -22,6 +22,18 @@ import {Link} from "react-router-dom";
             <li>
               <Link to="/EmojiGame">EmojiGame</Link>
             </li>
+            <li>
+              <Link to="/counter-page">Counter page</Link>
+            </li>
+            <li>
+              <Link to="/TodoMobx">Todo Mobx</Link>
+            </li>
+            <li>
+              <Link to="/EventMobx">Event App</Link>
+            </li>
+            <li>
+              <Link to="/Example">Example</Link>
+            </li>
           </ul>
         </nav>
    )

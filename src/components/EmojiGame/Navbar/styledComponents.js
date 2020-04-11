@@ -2,7 +2,6 @@ import tw from 'tailwind.macro';
 import styled from '@emotion/styled'
 
 const Header=styled.div`
-    ${props=>console.log(props.theme)}
     display:flex;
     justify-content:space-between;
     align-items:center;

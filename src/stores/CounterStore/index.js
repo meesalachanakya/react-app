@@ -3,14 +3,23 @@ import { observable, action } from 'mobx'
 class CounterStore {
    @observable count = 0
 
-   @action.bound
+   //@action.bound
    incrementCounter() {
-      this.count = this.count + 1
+      if(!isNaN(parseInt(this.count))){
+      this.count = parseInt(this.count) + 1}
+      else{
+         this.count=1
+      }
    }
 
-   @action.bound
+   //@action.bound
    decrementCounter() {
-      this.count = this.count - 1
+      if(!isNaN(parseInt(this.count))){
+      this.count = parseInt(this.count) - 1
+      }
+      else{
+         this.count=-1
+      }
    }
 }
 

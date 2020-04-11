@@ -2,7 +2,6 @@ import tw from 'tailwind.macro';
 import styled from '@emotion/styled'
 
 const EmojisGameApp=styled.div`
-    ${props=>console.log(props.theme)}
     display:flex;
     flex-direction:column;
     color:${props=>props.theme==='light-mode'?'black':'white'};

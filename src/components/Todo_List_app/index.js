@@ -1,4 +1,3 @@
-
 import React from 'react';
 class TodoTask extends React.Component{
     constructor(props){
@@ -67,7 +66,6 @@ class TodoListUpdates extends React.Component{
             }
         }
         
-        
         removeTask=(id)=>{
             let previousState=this.state.todoList;
             previousState=previousState.filter((each)=>id!==each);
@@ -93,7 +91,6 @@ class TodoListUpdates extends React.Component{
                 previousState=previousState.filter((each)=>parseInt(taskid)!==parseInt(each));
                 this.setState({todoListActive:previousState});
             }
-            
         }
         
         displayActive=()=>{
@@ -158,7 +155,6 @@ class TodoListUpdates extends React.Component{
         );
     }
 }
-
 //ReactDOM.render(<TodoListUpdates />,document.getElementById('root'));
 export {TodoListUpdates};
 
