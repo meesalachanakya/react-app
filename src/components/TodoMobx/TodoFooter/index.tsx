@@ -1,6 +1,5 @@
 import React from 'react'
-import tw from 'tailwind.macro';
-import {observable, action} from 'mobx'
+import {action} from 'mobx'
 import {observer} from 'mobx-react'
 import todoStore from '../../../stores/TodoStore';
 

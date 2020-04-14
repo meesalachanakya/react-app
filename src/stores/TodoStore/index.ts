@@ -1,21 +1,34 @@
 import React from 'react'
 import {observable, action,computed,reaction} from 'mobx'
-import {observer} from 'mobx-react'
-import Todo from '../models'
+import TodoModel from '../models'
 
 
-class TodoStore extends React.Component{
+class TodoStore<todos> {
     @observable todos=[]
     @observable selectedFilter="ALL"
     @observable selectedFilterList=[]
     
+    
     @action.bound
     onAddTodo(todo){
-        this.todos.push({key:Math.random(),id:Math.random(),todo:todo,isCompleted:false})
+        
+        const TodoObject={
+            todo:todo,
+            isCompleted:false,
+            id:Math.random().toString()
+        }
+        const todoModel=new TodoModel(TodoObject)
+        
+        this.todos.push(todoModel)
+        
+        /*
+        this.todos.push({id:Math.random().toString(),todo:todo,isCompleted:false})*/
+        
+        
         this.selectedFilterList=this.todos
         //console.log(this.todos)
     }
-    
+              
     
     
     @action.bound
@@ -36,7 +49,6 @@ class TodoStore extends React.Component{
     
     @action.bound
     filteredTodos(filter){
-        //const all=this.todos
        switch(this.selectedFilter){
            case 'ALL':return(this.todos=this.selectedFilterList)
            case 'ACTIVE':return(this.todos=this.selectedFilterList.filter((each)=>{if(each.isCompleted===false){return each}}))
@@ -68,4 +80,4 @@ class TodoStore extends React.Component{
 
 const todoStore=new TodoStore()
 
-export default todoStore
+export {todoStore as default,TodoStore}

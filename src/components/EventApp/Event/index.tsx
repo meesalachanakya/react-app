@@ -1,10 +1,16 @@
 import React from 'react'
-import {observable, action,computed,reaction} from 'mobx'
+import {observable, action} from 'mobx'
 import {observer} from 'mobx-react'
 import eventStore from '../../../stores/EventStore';
+import EventModel from '../../../stores/EventModel'
+type eventDetailsPropsType={
+    
+    eventDetails:EventModel
+}
+
 
 @observer
-class Event extends React.Component{
+class Event extends React.Component<eventDetailsPropsType>{
     @observable isEditEvent=false
     @observable eventName
     @observable eventLocation
@@ -12,12 +18,12 @@ class Event extends React.Component{
     
     @action.bound
     onChangeEventName(event){
-        this.props.eventDetails.eventName=event.target.value
+        this.props.eventDetails.name=event.target.value
     }
     
     @action.bound
     onChangeEventLocation(event){
-        this.props.eventDetails.eventLocation=event.target.value
+        this.props.eventDetails.location=event.target.value
     }
     
     @action.bound
@@ -36,14 +42,14 @@ class Event extends React.Component{
     }
     
     render(){
-        const {eventName}=this.porps.eventDetails
-        const {eventLocation}=this.props.eventDetails
+        const {name}=this.props.eventDetails
+        const {location}=this.props.eventDetails
         
         if(this.isEditEvent===false){
         return(<div className="flex border-solid border-2 border-black m-3">
                 <div className="flex flex-col">
-                <p className='m-3'>{eventName}</p>
-                <p className='m-3'>{eventLocation}</p>
+                <p className='m-3'>{name}</p>
+                <p className='m-3'>{location}</p>
                 </div>
                 <div className="flex flex-col">
                     <button  className='border-solid border-2 border-black m-3' onClick={this.onEditEventDetails}>Edit</button>
@@ -55,8 +61,8 @@ class Event extends React.Component{
             return(
             <div className="flex border-solid border-2 border-black m-3">
                 <div className="flex flex-col">
-                    <input className='m-3 border-solid border-2 border-black ' defaultValue={eventName} onChange={this.onChangeEventName} placeholder="Event Name"/>
-                    <input className='m-3 border-solid border-2 border-black ' defaultValue={eventLocation} onChange={this.onChangeEventLocation} placeholder="Event Location"/>
+                    <input className='m-3 border-solid border-2 border-black ' defaultValue={name} onChange={this.onChangeEventName} placeholder="Event Name"/>
+                    <input className='m-3 border-solid border-2 border-black ' defaultValue={location} onChange={this.onChangeEventLocation} placeholder="Event Location"/>
                 </div>
                 <button  className='border-solid border-2 border-black m-10' onClick={this.onUpdateEventDetails}>Update Event</button>
             </div>) 

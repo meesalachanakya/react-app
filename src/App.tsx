@@ -1,34 +1,35 @@
 import React from "react";
-import {Car,CarsList} from './components/cars-app/index';
-import {TodoListUpdates} from './components/Todo_List_app/index';
-import {FormComponents} from './components/assignment-3/form-components';
-import CountriesApp from './components/countries/CountriesApp';
-import Details from './components/countries/details';
-import EmojiGame from './components/EmojiGame/EmojiGame/index.js'
-import TodoApp from './components/TodoMobx/TodoApp/index.js'
-import EventApp from './components/EventApp/EventApp'
-import {A,B,C} from './components/Example'
-import './components/cars-app/index.css';
-import './components/Todo_List_app/index.css';
-import './components/countries/CountriesApp.css';
-import Home from './components/home.js';
-import Loader from 'react-loader-spinner'
-import CounterPage from './components/CounterPage'
 import {observable,action} from 'mobx';
-import {configure} from 'mobx'
 import {observer} from 'mobx-react'
-import themeStore from './stores/ThemeStore'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
 
+import {CarsList} from './components/cars-app/index';
+import {TodoListUpdates} from './components/Todo_List_app';
+import {FormComponents} from './components/assignment-3/form-components';
+import CountriesApp from './components/countries/CountriesApp';
+import Details from './components/countries/details';
+import EmojiGame from './components/EmojiGame/EmojiGame'
+import TodoApp from './components/TodoMobx/TodoApp'
+import EventApp from './components/EventApp/EventApp'
+import {A} from './components/Example'
+import './components/cars-app/index.css';
+import './components/Todo_List_app/index.css';
+import './components/countries/CountriesApp.css';
+import Home from './components/home';
+import CounterPage from './components/CounterPage'
+//import themeStore from './stores/ThemeStore'
+
+
+
 //configure ({enforceActions:true})
 
-@observer
+//@observer
 class App extends React.Component {
-  
+  /*
   @observable selectedTheme="light-mode"
   
   @action.bound
@@ -37,8 +38,9 @@ class App extends React.Component {
   }
   
   onChangeTheme=(theme)=>{
-    themeStore.setCurrentTheme(theme);
+    themeStore.setCurrentTheme();
   }
+  */
   /*
   onChangeTheme=(theme)=>{
     if(this.getcurrentTheme()==='light-mode'){
@@ -68,19 +70,25 @@ class App extends React.Component {
             <FormComponents />
           </Route>
           <Route exact path="/countriesApp">
-            <CountriesApp buttonText="light-mode" changeTheme={this.onChangeTheme} theme={this.selectedTheme} />
+            <CountriesApp buttonText="light-mode" /*changeTheme={this.onChangeTheme} theme={this.selectedTheme}*/ />
           </Route>
           <Route path="/countriesApp/" >
-            <Details buttonText="light-mode" changeTheme={this.onChangeTheme} theme={this.selectedTheme}/>
+            <Details buttonText="light-mode"/* changeTheme={this.onChangeTheme} theme={this.selectedTheme}*//>
           </Route>
-          <Route path="/EmojiGame" children=<EmojiGame/>/>
+          <Route path="/EmojiGame">
+            <EmojiGame/>
+          </Route>
+          <Route path="/TodoMobx">
+            <TodoApp/>
+          </Route>
           
-          <Route path="/TodoMobx" children=<TodoApp/>/>
+          <Route path="/EventMobx">
+          <EventApp/>
+          </Route>
           
-          <Route path="/EventMobx" children=<EventApp/>/>
-          
-          <Route path="/Example" children=<A/>/>
-          
+          <Route path="/Example">
+            <A/>
+            </Route>
           <Route path="/">
             <Home />
           </Route>

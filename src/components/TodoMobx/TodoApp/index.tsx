@@ -1,11 +1,9 @@
 import React from 'react'
-import { observable, action } from 'mobx'
 import {observer} from 'mobx-react'
-import AddTodo from '../AddTodo/index.js'
-import TodoList from '../TodoList/index.js'
-import TodoFooter from '../TodoFooter/index.js'
-import todoStore from '../../../stores/TodoStore';
-import tw from 'tailwind.macro'
+import AddTodo from '../AddTodo'
+import TodoList from '../TodoList'
+import TodoFooter from '../TodoFooter'
+
 
 
 @observer

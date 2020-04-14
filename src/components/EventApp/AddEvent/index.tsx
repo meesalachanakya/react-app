@@ -1,11 +1,11 @@
 import React from 'react'
-import {observable, action,computed,reaction} from 'mobx'
-import tw from 'tailwind.macro'
+import {observable, action,reaction} from 'mobx'
 import eventStore from '../../../stores/EventStore';
 
+
 class AddEvent extends React.Component{
-    @observable eventName=''
-    @observable eventLocation=''
+    @observable eventName:string=''
+    @observable eventLocation:string=''
     
     
     @action.bound

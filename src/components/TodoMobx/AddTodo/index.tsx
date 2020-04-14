@@ -6,7 +6,6 @@ class AddTodo extends React.Component{
     
     @observable todoTitle=""
     
-    
     @action.bound
     handleChange(event){
         const {value}=event.target

@@ -1,5 +1,6 @@
-import {observable} from 'mobx'
 
+import {observable} from 'mobx'
+/*
 class ThemeStore{
     @observable selectedTheme
     
@@ -20,3 +21,4 @@ class ThemeStore{
 
 const themeStore = new ThemeStore()
 export default themeStore
+*/
