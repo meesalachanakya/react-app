@@ -4,8 +4,8 @@ import eventStore from '../../../stores/EventStore';
 
 
 class AddEvent extends React.Component{
-    @observable eventName:string=''
-    @observable eventLocation:string=''
+    @observable eventName=''
+    @observable eventLocation=''
     
     
     @action.bound

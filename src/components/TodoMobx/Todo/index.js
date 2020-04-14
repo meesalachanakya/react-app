@@ -4,14 +4,9 @@ import {observer} from 'mobx-react'
 import TodoModel from '../../../stores/models';
 import todoStore from '../../../stores/TodoStore';
 
-type Todos={
-    todo:any
-    id:string
-    isCompleted:boolean
-}
 
 @observer
-class Todo extends React.Component<Todos>{
+class Todo extends React.Component{
     
     
     @action.bound

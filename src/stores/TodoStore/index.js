@@ -3,7 +3,7 @@ import {observable, action,computed,reaction} from 'mobx'
 import TodoModel from '../models'
 
 
-class TodoStore<todos> {
+class TodoStore {
     @observable todos=[]
     @observable selectedFilter="ALL"
     @observable selectedFilterList=[]

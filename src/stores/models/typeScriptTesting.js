@@ -62,7 +62,7 @@ class Button extends Component<ButtonProps> {
     return  <div><div>text:'khmb'</div></div>;
   }
 }*/
-
+/*
 import React from 'react'
 
 interface ButtonProps {
@@ -75,3 +75,4 @@ interface ButtonProps {
 function Button(props: ButtonProps) {
     //const tex='kd'
 }
+*/

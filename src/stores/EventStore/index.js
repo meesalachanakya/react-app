@@ -5,10 +5,10 @@ import ModelObjectType from '../EventModel'
 
 class EventStore{
     
-    @observable Events:Array<EventModel>=[]
+    @observable Events=[]
     
     
-    onAddEvent=(name:string,location:string)=>{
+    onAddEvent=(name,location)=>{
          const ModelObject={
              name:name,
              Location:location,

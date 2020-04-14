@@ -4,27 +4,17 @@ import todoStore from '../TodoStore'
 import TodoStore from '../TodoStore'
 
 
-export type TodoObjectType={
-todo:string
-isCompleted:boolean
-id:string
-}
-
-
 
 class TodoModel{
     
-    @observable todo:string=""
-    @observable isCompleted:boolean
-    id:string=""
-    constructor(TodoObject:TodoObjectType){
+    @observable todo=""
+    @observable isCompleted=false
+    id=""
+    constructor(TodoObject){
         this.todo=TodoObject.todo,
         this.isCompleted=TodoObject.isCompleted
         this.id=TodoObject.id
     }
-
-    
-    
     
     @action.bound    
     onCompleteTodo(status,id){
