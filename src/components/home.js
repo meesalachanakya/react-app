@@ -34,6 +34,10 @@ import {Link} from "react-router-dom";
             <li>
               <Link to="/Example">Example</Link>
             </li>
+            <li>
+              <Link to='/GridMemoryGame'>GridMemoryGame</Link>
+            </li>
+            
           </ul>
         </nav>
    )

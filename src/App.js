@@ -16,6 +16,7 @@ import EmojiGame from './components/EmojiGame/EmojiGame'
 import TodoApp from './components/TodoMobx/TodoApp'
 import EventApp from './components/EventApp/EventApp'
 import {A} from './components/Example'
+import GridMemoryGame from './components/GridGame/GridMemoryGame'
 import './components/cars-app/index.css';
 import './components/Todo_List_app/index.css';
 import './components/countries/CountriesApp.css';
@@ -88,7 +89,12 @@ class App extends React.Component {
           
           <Route path="/Example">
             <A/>
-            </Route>
+          </Route>
+          <Route path="/GridMemoryGame">
+            <GridMemoryGame/>
+          </Route>
+          
+            
           <Route path="/">
             <Home />
           </Route>
