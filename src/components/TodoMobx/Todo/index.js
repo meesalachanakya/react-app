@@ -11,17 +11,21 @@ class Todo extends React.Component{
     
     @action.bound
     onCompleteTodo(event){
+        
+        const {todo}=this.props;
+        const todoModel=new TodoModel(todo);
         if(event.target.checked){
-        TodoModel.onCompleteTodo('Checked',this.props.todo.id)}
+        todoModel.onCompleteTodo('Checked',todo.id);
+        }
         else{
-            TodoModel.onCompleteTodo('Unchecked',this.props.todo.id)
+            todoModel.onCompleteTodo('Unchecked',todo.id);
         }
     }
     
+    
     @action.bound
     onRemoveTodo(event){
-        todoStore.onRemoveTodo(this.props.todo.id)
-        //console.log(this.props.todo.id)
+        todoStore.onRemoveTodo(this.props.todo.id);
     }
     
     @action.bound
@@ -30,8 +34,7 @@ class Todo extends React.Component{
     }
     
     render(){
-        //console.log(this.props.todo.isCompleted)
-        const {isCompleted}=this.props.todo
+        const {isCompleted}=this.props.todo;
         
         return(
             <div>
@@ -39,8 +42,8 @@ class Todo extends React.Component{
                 <input disabled={isCompleted===true} defaultValue={this.props.todo.todo}/>
                 <button onClick={this.onRemoveTodo} ><b>X</b></button>
             </div>
-            )
+            );
     }
 }
 
-export default Todo
+export default Todo;

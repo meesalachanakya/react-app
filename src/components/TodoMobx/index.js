@@ -1,6 +1,6 @@
 import React from 'react';
-import {observable, action} from 'mobx'
-import {observer} from 'mobx-react'
+import {observable, action} from 'mobx';
+import {observer} from 'mobx-react';
 //import {configure} from 'mobx'
 
 //configure ({enforceActions:'observed'})
@@ -16,15 +16,15 @@ class TodoTask extends React.Component{
             this.textClassName="text-line-through";
             this.taskChecked=true;
             this.props.length("decrement");
-            this.props.completed(this.props.id,"add")
-            this.props.active(this.props.id,"remove")
+            this.props.completed(this.props.id,"add");
+            this.props.active(this.props.id,"remove");
         }
         else{
-            this.textClassName="aboutTask"
-            this.taskChecked=false
+            this.textClassName="aboutTask";
+            this.taskChecked=false;
             this.props.length("increment");
-            this.props.completed(this.props.id,"remove")
-            this.props.active(this.props.id,"add")
+            this.props.completed(this.props.id,"remove");
+            this.props.active(this.props.id,"add");
         }
     }
     
@@ -59,9 +59,8 @@ class TodoApp extends React.Component{
                 event.target.value="";
                 this.taskCount("increment");
                 this.todoList.push(parseInt(this.todoList.length)+1);
-                this.todoListActive.push(parseInt(this.todoList.length)+1)
+                this.todoListActive.push(parseInt(this.todoList.length)+1);
                 this.footerClassName='footer';
-                //console.log(this.state)
                 }
             }
         }
@@ -73,13 +72,13 @@ class TodoApp extends React.Component{
             this.todoList=previousState;
             this.taskCount("decrement");
             if(!(parseInt(this.todoList.length)-1)){
-                this.footerClassName='nofooter'
+                this.footerClassName='nofooter';
             }
         }
         
         @action.bound
         displayAll(){
-            this.todoList=this.todoListAll
+            this.todoList=this.todoListAll;
         }
         
         @action.bound
@@ -87,19 +86,19 @@ class TodoApp extends React.Component{
           if(action==="add"){
                 let previousState=this.todoListActive;
                 previousState.push(taskid);
-                this.todoListActive=previousState
+                this.todoListActive=previousState;
             }
             else{
                 let previousState=this.todoListActive;
                 previousState=previousState.filter((each)=>parseInt(taskid)!==parseInt(each));
-                this.todoListActive=previousState
+                this.todoListActive=previousState;
             }
         }
         
         @action.bound
         displayActive(){
-            this.todoListAll=this.todoList
-            this.todoList=this.todoListActive
+            this.todoListAll=this.todoList;
+            this.todoList=this.todoListActive;
         }
         
         @action.bound
@@ -113,25 +112,25 @@ class TodoApp extends React.Component{
             else{
                 let previousState=this.todoListCompleted;
                 previousState=previousState.filter((each)=>parseInt(taskid)!==parseInt(each));
-                this.todoListCompleted=previousState
+                this.todoListCompleted=previousState;
             }
         }
         
         @action.bound
         displayCompleted(){
-            this.todoListAll=this.todoList
-            this.todoList=this.todoListCompleted
+            this.todoListAll=this.todoList;
+            this.todoList=this.todoListCompleted;
          }
         
         @action.bound
         taskCount(change){
-            let count
+            let count;
             if(change==="increment"){
-                count=this.pendingTasksCount+1
-                this.pendingTasksCoun=count
+                count=this.pendingTasksCount+1;
+                this.pendingTasksCoun=count;
             }
             else{
-                count=this.pendingTasksCount-1
+                count=this.pendingTasksCount-1;
                 this.pendingTasksCount=count;
             }
         }

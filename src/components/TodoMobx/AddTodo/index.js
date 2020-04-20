@@ -9,8 +9,8 @@ class AddTodo extends React.Component{
     @action.bound
     handleChange(event){
         const {value}=event.target
-        if(event.charCode===13){
-            todoStore.onAddTodo(value)
+        if(event.charCode===13&&value.length){
+            todoStore.onAddTodo(value,13)
             event.target.value=''
         }
     }
