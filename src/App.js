@@ -1,6 +1,6 @@
 import React from "react";
 import {observable,action} from 'mobx';
-import {observer} from 'mobx-react'
+import {observer,Provider} from 'mobx-react'
 import {
   BrowserRouter as Router,
   Switch,
@@ -22,6 +22,8 @@ import './components/Todo_List_app/index.css';
 import './components/countries/CountriesApp.css';
 import Home from './components/home';
 import CounterPage from './components/CounterPage'
+import UsersPage from './components/UsersPage'
+import stores from './stores'
 //import themeStore from './stores/ThemeStore'
 
 
@@ -54,7 +56,9 @@ class App extends React.Component {
   */
   
   render(){
+    //console.log({...stores})
   return (
+    <Provider {...stores} >
     <Router>
       <div>
         <Switch>
@@ -87,13 +91,10 @@ class App extends React.Component {
           <EventApp/>
           </Route>
           
-          <Route path="/Example">
-            <A/>
-          </Route>
           <Route path="/GridMemoryGame">
             <GridMemoryGame/>
           </Route>
-          
+          <Route exact path='/users' component={UsersPage}  />
             
           <Route path="/">
             <Home />
@@ -102,6 +103,7 @@ class App extends React.Component {
         </Switch>
       </div>
     </Router>
+    </Provider>
   );
   }
 }

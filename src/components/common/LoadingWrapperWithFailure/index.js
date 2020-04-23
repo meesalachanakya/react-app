@@ -10,7 +10,9 @@ import FailureView from './FailureView'
 
 @observer
 class LoadingWrapperWithFailure extends React.Component {
+  
   render() {
+    //console.log(this.props)
     const {
       apiStatus,
       renderSuccessUI: RenderSuccessUI,
@@ -18,7 +20,7 @@ class LoadingWrapperWithFailure extends React.Component {
       apiError,
     } = this.props
     const errorMessage = getUserDisplayableErrorMessage(apiError)
-
+    console.log(apiStatus)
     switch (apiStatus) {
       case API_FETCHING:
         return <LoadingView />

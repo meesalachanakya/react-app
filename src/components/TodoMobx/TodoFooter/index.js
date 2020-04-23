@@ -1,36 +1,43 @@
 import React from 'react'
 import {action} from 'mobx'
-import {observer} from 'mobx-react'
-import todoStore from '../../../stores/TodoStore';
+import {observer,inject} from 'mobx-react'
 
+import tw from 'tailwind.macro'
+
+const Button=tw.button`bg-white border-solid border-2 border-black m-1`
+
+const Footer=tw.div`flex p-20 m-50 border`
+
+@inject('todoStore')
 @observer
 class TodoFooter extends React.Component{
     
     @action.bound
     onChangeSelectedFilter(event){
-        todoStore.onChangeSelectedFilter(event.target.value)
+        this.props.todoStore.onChangeSelectedFilter(event.target.value)
     }
-    
-    onClearCompleted(){
-       todoStore.onClearCompleted() 
+    @action.bound
+    onClickClearCompleted(){
+        //console.log(this.props.todoStore)
+       this.props.todoStore.onClearCompleted()
     }
     
     render(){
         //console.log('-->',todoStore.activeTodosCount)
         //todoStore.todos.length
-        const count=todoStore.activeTodosCount;
-        return(<div style={{display:todoStore.todos.length>0?'flex':'none'}} className="flex p-20 m-50 border">
+        const count=this.props.todoStore.activeTodosCount;
+        return(<Footer style={{display:this.props.todoStore.todos.length>0?'flex':'none'}}>
         <div>{count} items left</div>
         <div className='flex'>
-        <button className='bg-white border-solid border-2 border-black m-1' onClick={this.onChangeSelectedFilter} value="ALL">All</button>
-        <button className='bg-white border-solid border-2 border-black m-1' onClick={this.onChangeSelectedFilter} value="ACTIVE">Active</button>
-        <button className='bg-white border-solid border-2 border-black m-1' onClick={this.onChangeSelectedFilter} value="COMPLETED">Completed</button>
+        <Button onClick={this.onChangeSelectedFilter} value="ALL">All</Button>
+        <Button onClick={this.onChangeSelectedFilter} value="ACTIVE">Active</Button>
+        <Button onClick={this.onChangeSelectedFilter} value="COMPLETED">Completed</Button>
         </div>
         <div>
-            <button onClick={this.onClearCompleted} value="CLEARCOMPLETED" >Clear Completed</button>
+            <Button onClick={this.onClickClearCompleted} >Clear Completed</Button>
         </div>
         
-        </div>)
+        </Footer>)
     }
 }
 export default TodoFooter

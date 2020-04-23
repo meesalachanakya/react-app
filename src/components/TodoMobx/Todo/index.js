@@ -1,16 +1,20 @@
 import React from 'react'
 import {action } from 'mobx'
-import {observer} from 'mobx-react'
+import {inject,observer} from 'mobx-react'
+import tw from 'tailwind.macro'
 import TodoModel from '../../../stores/models';
-import todoStore from '../../../stores/TodoStore';
+//import todoStore from '../../../stores/TodoStore';
 
 
+const Task=tw.div``
+
+@inject('todoStore')
 @observer
 class Todo extends React.Component{
     
     
     @action.bound
-    onCompleteTodo(event){
+    onCheckboxClick(event){
         
         const {todo}=this.props;
         const todoModel=new TodoModel(todo);
@@ -25,7 +29,7 @@ class Todo extends React.Component{
     
     @action.bound
     onRemoveTodo(event){
-        todoStore.onRemoveTodo(this.props.todo.id);
+        this.props.todoStore.onRemoveTodo(this.props.todo.id);
     }
     
     @action.bound
@@ -35,13 +39,12 @@ class Todo extends React.Component{
     
     render(){
         const {isCompleted}=this.props.todo;
-        
         return(
-            <div>
-                <input type="checkbox" defaultChecked={isCompleted} onClick={this.onCompleteTodo}/>
+            <Task>
+                <input type="checkbox" defaultChecked={isCompleted} onClick={this.onCheckboxClick}/>
                 <input disabled={isCompleted===true} defaultValue={this.props.todo.todo}/>
                 <button onClick={this.onRemoveTodo} ><b>X</b></button>
-            </div>
+            </Task>
             );
     }
 }

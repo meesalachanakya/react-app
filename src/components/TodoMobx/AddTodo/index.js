@@ -1,7 +1,13 @@
 import React from 'react'
 import { observable, action } from 'mobx'
-import todoStore from '../../../stores/TodoStore';
+import {inject} from 'mobx-react'
+import tw from 'tailwind.macro'
+//import todoStore from '../../../stores/TodoStore';
 
+
+const Input=tw.input``
+
+@inject('todoStore')
 class AddTodo extends React.Component{
     
     @observable todoTitle=""
@@ -10,13 +16,13 @@ class AddTodo extends React.Component{
     handleChange(event){
         const {value}=event.target
         if(event.charCode===13&&value.length){
-            todoStore.onAddTodo(value,13)
+            this.props.todoStore.onAddTodo(value,13)
             event.target.value=''
         }
     }
 
     render(){
-        return(<input type="text" name="" onKeyPress={this.handleChange} />)
+        return(<Input type="text" name="" placeholder='what toDo?' onKeyPress={this.handleChange} />)
     }
 }
 

@@ -32,12 +32,11 @@ import {Link} from "react-router-dom";
               <Link to="/EventMobx">Event App</Link>
             </li>
             <li>
-              <Link to="/Example">Example</Link>
-            </li>
-            <li>
               <Link to='/GridMemoryGame'>GridMemoryGame</Link>
             </li>
-            
+            <li>
+              <Link to='/users'>UserList</Link>
+            </li>
           </ul>
         </nav>
    )

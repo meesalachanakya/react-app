@@ -1,17 +1,71 @@
 /*global fetch*/
-import React from 'react'
+import {bindPromiseWithOnSuccess} from '@ib/mobx-promise'
 import {observable, action,computed,reaction} from 'mobx'
 import TodoModel from '../models'
 
 
 class TodoStore {
-    @observable todos=[]
-    @observable selectedFilter="ALL"
-    @observable selectedFilterList=[]
+    @observable getTodosApiStatus
+    @observable getTodosApiError
+    @observable todos
+    @observable selectedFilter
+    selectedFilterList
+    todoService
+    
+    constructor(todoService){
+        this.init()
+        this.todoService=todoService
+    }
+    
+    @action.bound
+    init(){
+        this.getTodosApiError=null
+        this.todos=[]
+        this.selectedFilter='ALL'
+        this.selectedFilterList=[]
+    }
+    
+    @action
+    clearStore(){
+        this.init()
+    }
+    
+    @action.bound
+    setTodosAPIResponse(todoResponse){
+        //alert('hi')
+        //console.log(todoResponse)
+         todoResponse.map((response)=>{this.onAddTodo(response,1)})
+    }
+    
     
     
     @action.bound
+    setTodosAPIError(error){
+        this.getTodosApiError=error
+    }
+    
+    @action.bound
+    setTodosAPIStatus(apiStatus){
+        this.getTodosApiStatus=apiStatus
+        //console.log(this.getTodosApiStatus)
+    }
+    
+    @action.bound
+    getTodosAPI(){
+        const todosPromise=this.todoService.getTodosAPI()
+        
+        return bindPromiseWithOnSuccess(todosPromise)
+                .to(this.setTodosAPIStatus,this.setTodosAPIResponse)
+                    .catch(this.setTodosAPIError)
+    }
+   
+   
+   
+   
+    
+    @action.bound
     onAddTodo(todo,keyPressed){
+        
         let TodoObject
         if(keyPressed===13){
         TodoObject={
@@ -29,12 +83,10 @@ class TodoStore {
         };
         const todoModel=new TodoModel(TodoObject);
         this.todos.push(todoModel);
-        /*
-        this.todos.push({id:Math.random().toString(),todo:todo,isCompleted:false})*/
         this.selectedFilterList=this.todos;
     }
-              
     
+              
     @action.bound
     onRemoveTodo(id){
         const filteredTodos=this.todos.filter(each=>{if(each.id!==id){return each}});
@@ -48,9 +100,8 @@ class TodoStore {
         this.filteredTodos();
     }
     
-    
     @action.bound
-    filteredTodos(filter){
+    filteredTodos(){
        switch(this.selectedFilter){
            case 'ALL':return(this.todos=this.selectedFilterList);
            case 'ACTIVE':return(this.todos=this.selectedFilterList.filter((each)=>{if(each.isCompleted===false){return each}}));
@@ -58,28 +109,16 @@ class TodoStore {
        }
     }
     
-    
     @action.bound
     onClearCompleted(){
-           this.todos=this.selectedFilterList.filter(each=>{if(each.isCompleted===false) {return each}})
-           this.selectedFilterList=this.todos
+          this.todos=this.selectedFilterList.filter(each=>{if(each.isCompleted===false) {return each}})
+          this.selectedFilterList=this.todos
     }
     
     @computed 
     get activeTodosCount(){
       return this.todos.filter(each=>each.isCompleted===false).length
     }
-    
-    //todoReaction=reaction(()=>this.todos.filter(each=>each.isCompleted===false).length,(length)=>{if(length===0){alert('congo')}})
-    
-    /*
-    @computed
-    get filteredTodos(){
-        //console.log(filter)
-    }
-    */
 }
 
-const todoStore=new TodoStore()
-
-export {todoStore as default,TodoStore}
+export default TodoStore

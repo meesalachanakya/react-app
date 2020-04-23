@@ -1,12 +1,18 @@
+import UserService from '../Services/UserService/index.api.js';
+import UsersStore from './UsersStore';
+import CounterStore from './CounterStore';
+import TodoStore from './TodoStore'
+import TodoService from '../Services/TodoService/index.api.js'
 
-import CounterStore from './CounterStore'
-//import TodoList from './TodoList'
-//import TodoApp from './../components/TodoMobx/TodoApp'
+const counterStore = new CounterStore();
 
-const counterStore = new CounterStore()
-//const todoList= new TodoList()
+const userService =new UserService()
+const usersStore =new UsersStore(userService);
+
+const todoService =new TodoService()
+const todoStore =new TodoStore(todoService)
+
 
 export default {
-  counterStore,
-}
- 
+  counterStore,usersStore,todoStore
+};

@@ -1,7 +1,11 @@
 import {observable, action} from 'mobx'
 import {observer} from 'mobx-react'
-import todoStore from '../TodoStore'
-import TodoStore from '../TodoStore'
+import Store from '../'
+
+
+
+
+//import TodoStore from '../TodoStore'
 
 
 
@@ -11,7 +15,6 @@ class TodoModel{
     @observable isCompleted=false
     id=""
     constructor(TodoObject){
-        //console.log(TodoObject)
         this.todo=TodoObject.todo,
         this.isCompleted=TodoObject.isCompleted;
         this.id=TodoObject.id;
@@ -19,6 +22,11 @@ class TodoModel{
     
     @action.bound    
     onCompleteTodo(status,id){
+        
+        const {todoStore}=Store
+        //console.log(Store.todoStore,'hiii')
+       
+       
         if(status==='Checked'){
         todoStore.todos.map(each=>{if(each.id===id){each.isCompleted=true;return each;}});
         this.selectedFilterList=this.todos;
