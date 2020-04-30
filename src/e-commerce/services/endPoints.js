@@ -1,0 +1,1 @@
+export const productEndPoint='v1/products/'

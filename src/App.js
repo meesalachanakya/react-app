@@ -6,7 +6,9 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import {Link} from 'react-router-dom'
 
+import {ProtectedRoute} from './Common/ProtectedRoute'
 import {CarsList} from './components/cars-app/index';
 import {TodoListUpdates} from './components/Todo_List_app';
 import {FormComponents} from './components/assignment-3/form-components';
@@ -15,8 +17,11 @@ import Details from './components/countries/details';
 import EmojiGame from './components/EmojiGame/EmojiGame'
 import TodoApp from './components/TodoMobx/TodoApp'
 import EventApp from './components/EventApp/EventApp'
-import {A} from './components/Example'
+import Example from './components/Example'
 import GridMemoryGame from './components/GridGame/GridMemoryGame'
+import LoginPage from './components/LoginPage';
+import SignInPage from './Authentication/components/SignInPage'
+import ProductsPage from './e-commerce/components/ProductsPage'
 import './components/cars-app/index.css';
 import './components/Todo_List_app/index.css';
 import './components/countries/CountriesApp.css';
@@ -60,8 +65,12 @@ class App extends React.Component {
   return (
     <Provider {...stores} >
     <Router>
-      <div>
+    <div>
+        
         <Switch>
+          {/*
+          <ProtectedRoute path='\ecommerce-store' component='ProductsPage' />
+          */}
           <Route path="/counter-page">
             <CounterPage />
           </Route>
@@ -95,11 +104,26 @@ class App extends React.Component {
             <GridMemoryGame/>
           </Route>
           <Route exact path='/users' component={UsersPage}  />
-            
-          <Route path="/">
+          
+          <Route path='/example'>
+            <Example/>
+          </Route>
+          
+          <Route path='/signinPage'>
+              <SignInPage/>
+          </Route>
+      
+        <Route path='/ecommerce-store'>
+              <ProductsPage/>
+          </Route>
+        
+          <Route exact path="/">
             <Home />
           </Route>
           
+          {/*<Route path="/">
+            <LoginPage/>
+          </Route>*/}  
         </Switch>
       </div>
     </Router>

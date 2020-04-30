@@ -1,7 +1,7 @@
 import React from 'react'
 import {observable, action,reaction} from 'mobx'
 import eventStore from '../../../stores/EventStore';
-
+//import LoginPage from '../../LoginPage'
 
 class AddEvent extends React.Component{
     @observable eventName=''
@@ -25,9 +25,11 @@ class AddEvent extends React.Component{
         this.eventLocation=event.target.value
     }
     
+    
     render(){
         return(
             <div className="flex border-solid border-2 border-black m-3">
+            <button onClick={this.signout}>Sign Out</button>
                 <div className="flex flex-col">
                     <input className='m-3 border-solid border-2 border-black' value={this.eventName} onChange={this.onChangeEventName} placeholder="Event Name"/>
                     <input className='m-3 border-solid border-2 border-black' value={this.eventLocation} onChange={this.onChangeEventLocation} placeholder="Event Location"/>

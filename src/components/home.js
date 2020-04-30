@@ -1,8 +1,28 @@
 import React from 'react'
-import {Link} from "react-router-dom";
- function Home(){
-   return(
+import {Link,Redirect,withRouter} from "react-router-dom";
+import {observer} from 'mobx-react'
+import {observable} from 'mobx'
+import {clearUserSession} from '../utils/StorageUtils.js'
+
+@observer
+class Home extends React.Component{
+ //  @observable xs=false
+   
+/*   
+   signOut=()=>{
+    clearUserSession()
+    this.xs=true
+     //this.props.history.push("/")
+    }
+   
+  */ 
+   render(){
+    //  if(this.xs){
+      //   return(<Redirect to={{pathname:'/'}}   />)
+    //  }
+        return(
         <nav>
+        <button  onClick={this.signOut}>SignOut</button>
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -35,10 +55,21 @@ import {Link} from "react-router-dom";
               <Link to='/GridMemoryGame'>GridMemoryGame</Link>
             </li>
             <li>
+              <Link to='/Example'>Example</Link>
+            </li>
+            
+            <li>
               <Link to='/users'>UserList</Link>
             </li>
+            <li>
+              <Link to='/signinPage'>E-commerce </Link>
+            </li>
+           {/*
+            <li>
+              <Link to='/'>Login</Link>
+            </li>*/}
           </ul>
         </nav>
-   )
- }   
-export default Home
+   )}
+  }
+export default withRouter( Home)

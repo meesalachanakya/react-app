@@ -6,7 +6,7 @@ import ModelObjectType from '../EventModel'
 class EventStore{
     
     @observable Events=[]
-    
+    //@observable isAuthenticated=false
     
     onAddEvent=(name,location)=>{
          const ModelObject={
@@ -24,6 +24,7 @@ class EventStore{
         const filteredEvents=this.Events.filter((each)=>{if(each.id!==id){return each}})
         this.Events=filteredEvents
     }
+    
     
     @computed
     get noOfEvents(){

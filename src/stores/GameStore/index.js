@@ -108,7 +108,7 @@ class GameStore {
     setTopLevel(){
         if(this.level>this.toplevel){
             this.toplevel=this.level;
-            window.localStorage.setItem("toplevel",this.toplevel)
+            window.localStorage.setItem('toplevel',this.toplevel)
         }
     }
 }
