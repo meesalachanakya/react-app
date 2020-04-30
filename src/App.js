@@ -2,7 +2,7 @@ import React from "react";
 import {observable,action} from 'mobx';
 import {observer,Provider} from 'mobx-react'
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
@@ -68,9 +68,9 @@ class App extends React.Component {
     <div>
         
         <Switch>
-          {/*
-          <ProtectedRoute path='\ecommerce-store' component='ProductsPage' />
-          */}
+          
+          <ProtectedRoute path='/ecommerce-store' component={ProductsPage} />
+        
           <Route path="/counter-page">
             <CounterPage />
           </Route>
@@ -112,11 +112,11 @@ class App extends React.Component {
           <Route path='/signinPage'>
               <SignInPage/>
           </Route>
-      
+      {/*
         <Route path='/ecommerce-store'>
               <ProductsPage/>
           </Route>
-        
+        */}
           <Route exact path="/">
             <Home />
           </Route>
