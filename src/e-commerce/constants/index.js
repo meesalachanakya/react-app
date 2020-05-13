@@ -1,0 +1,1 @@
+export const e_CommercePath='/e-commerce'

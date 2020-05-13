@@ -8,7 +8,7 @@ const CartView=tw.div`flex flex-col h-screen justify-between sticky`
 const CheckoutAndSubTotal=tw.div``
 const ProductsCount=tw.div`absolute font-bold text-yellow-600 -my-2 p-3 mx-1`
 const ExpendedCart=styled.div`
-${tw`h-screen bg-gray-800 fixed top-0 right-0 z-20`}
+${tw`h-screen bg-gray-800 fixed top-0 right-0 z-10`}
 width:350px;
 transition:all 0.5s ease;
 `

@@ -20,7 +20,7 @@ import EventApp from './components/EventApp/EventApp'
 import Example from './components/Example'
 import GridMemoryGame from './components/GridGame/GridMemoryGame'
 import LoginPage from './components/LoginPage';
-import SignInPage from './Authentication/components/SignInPage'
+import SignInPageRoute from './Authentication/routes/SignInPageRoute'
 import ProductsPage from './e-commerce/components/ProductsPage'
 import './components/cars-app/index.css';
 import './components/Todo_List_app/index.css';
@@ -61,9 +61,8 @@ class App extends React.Component {
   */
   
   render(){
-    //console.log({...stores})
   return (
-    <Provider {...stores} >
+    <Provider {...stores}>
     <Router>
     <div>
         
@@ -110,7 +109,7 @@ class App extends React.Component {
           </Route>
           
           <Route path='/signinPage'>
-              <SignInPage/>
+              <SignInPageRoute/>
           </Route>
       {/*
         <Route path='/ecommerce-store'>
@@ -120,7 +119,7 @@ class App extends React.Component {
           <Route exact path="/">
             <Home />
           </Route>
-          
+                  
           {/*<Route path="/">
             <LoginPage/>
           </Route>*/}  

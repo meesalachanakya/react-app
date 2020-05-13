@@ -1,64 +1,31 @@
 import React from 'react';
-import {observable,action}  from 'mobx';
+import {withRouter} from 'react-router-dom';
+import { API_FETCHING } from "@ib/api-constants";
 import {observer} from 'mobx-react';
-import {withRouter,Redirect} from 'react-router-dom';
 import {authStore} from '../../../Common/stores';
-import {getAccessToken} from '../../utils/StorageUtils.js'
 
-import {Page,Head,UserName,Password,SignInWindow,Submit,ErrorMsg} from './styledComponents.js'
+import {Page,Head,UserName,Password,SignInWindow,Submit,ErrorMsg} from './styledComponents.js';
 
 @observer
 class SignInPage extends React.Component{
-    @observable username=''
-    @observable password=''
-    @observable errorMessage
-    //@observable nextPage=false
-    
-    
-    @action.bound
-    onChangeUserName(event){
-        this.username=event.target.value
+    usernameRef=React.createRef()
+    componentDidMount(){
+        this.usernameRef.current.focus()
     }
-    
-    @action.bound
-    onChangePassword(event){
-        this.password=event.target.value
-    }
-    
-    @action.bound
-    async onClickSignIn(){
-        event.preventDefault();
-        if((this.username.length!==0)&&(this.password.length!==0)){
-          await  authStore.signInAPI()
-            this.props.history.push('/ecommerce-store')
-            this.errorMessage=''
-        }
-        else if(this.username.length===0){
-            this.errorMessage='Enter UserName'
-        }
-        else if(this.password.length===0){
-            this.errorMessage='Enter Password'
-        }
-        
-    }
-    
     
     render(){
-        if(getAccessToken()){
-            return (<Redirect to={{pathname:'/ecommerce-store'}}/>)
-        }
-        
+        const {errorMessage,onChangePassword,onChangeUsername,onSubmitForm,username,password}=this.props;
+        //console.log(username)
+        //console.log(authStore.getUsersSignInAPIStatus===100)
         return(<Page>
-        <SignInWindow onSubmit={this.onClickSignIn}>
+        <SignInWindow onSubmit={onSubmitForm}>
         <Head>Sign in</Head>
-        
-        <UserName onChange={this.onChangeUserName} placeholder='UserName' type='text'/>
-        <Password onChange={this.onChangePassword} placeholder='Password' type='password'/>
-        <Submit type='submit'>Sign in</Submit>
-        <ErrorMsg>{this.errorMessage}</ErrorMsg>
+        <UserName ref={this.usernameRef} onChange={onChangeUsername} defaultValue={username} placeholder='Username' type='text'/>
+        <Password onChange={onChangePassword} defaultValue={password} placeholder='Password' type='password'/>
+        <Submit  type='submit'>{authStore.getUsersSignInAPIStatus===100?'Signing in ...':'Sign in'}</Submit>
+        <ErrorMsg>{errorMessage}</ErrorMsg>
         </SignInWindow>
-        </Page>)
-    }
+        </Page >)}
 }
 
-export default withRouter(SignInPage)
+export default SignInPage;

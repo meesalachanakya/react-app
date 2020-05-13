@@ -5,31 +5,37 @@ import {observable} from 'mobx'
 import {observer} from 'mobx-react'
 @observer
 class Example extends React.Component{
-    state ={
-       title:"Reat-practise",
-       author:{
-           name:"chanakya"
-           
-       },
-        likes:["cricket","hindi Teacher","sinnging"]
-}
-    changingState=()=>{
-       // this.message.title="mobx";
-        this.setState({title:"mobx"})
-    }
     
-    render(){
-         //console.log(this.state.title)
-        return(
-            <div>
-                 <button className="m-4" onClick={this.changingState}>checking</button>
-                 
-                {this.state.title} 
-               </div>
-            
-        )
+    message=observable({
+        title:"Foo",
+        author:{
+            name:"Michel"
+        },
+        likes:["John","sara"]
         
-    }
+        
+    })
+    
+    
+rendering=()=>{
+    
+this.message.title="dinesh"
+}    
+    
+    
+    
+    
+render(){
+    
+       console.log(this.message.title)
+    
+    
+    return(
+        <div>{this.rendering()}</div>)
+    
+}
+
+
 }
 
 

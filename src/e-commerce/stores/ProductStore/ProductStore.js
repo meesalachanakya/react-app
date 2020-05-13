@@ -1,5 +1,6 @@
 import {computed,action,observable} from 'mobx'
 import {bindPromiseWithOnSuccess} from '@ib/mobx-promise'
+import { API_INITIAL } from "@ib/api-constants";
 import Product from '../model'
 
 class ProductStore{
@@ -19,7 +20,8 @@ class ProductStore{
     @action.bound
     init(){
         this.productList=[]
-         this.sortBy="random"
+        this.sortBy="random"
+        this.getProductListAPIStatus=API_INITIAL
         this.getProductListAPIError=null
     }
     
@@ -39,6 +41,7 @@ class ProductStore{
     @action.bound
     setGetProductListAPIError(error){
         this.getProductListAPIError=error
+        //console.log('12345678906789',error)
     }
     
     @action.bound
@@ -49,8 +52,7 @@ class ProductStore{
             .to(this.setGetProductListAPIStatus,this.setProductListResponse)
                 .catch(this.setGetProductListAPIError)
     }
-    
-    
+     
     @action.bound
     onChangeSortBy(order){
         this.sortBy=order
@@ -62,13 +64,13 @@ class ProductStore{
         this.sizeFilter.push(size)}
     else{
         let index=this.sizeFilter.indexOf(size)
-            this.sizeFilter.splice(index,1)
+            this.sizeFilter.splice(index,1);
         }
     }
     
     @action.bound
     clearProductList(){
-        this.productList=[]
+        this.productList=[];
     }
     
     @computed
@@ -81,34 +83,33 @@ class ProductStore{
         }
         
         if(this.sizeFilter.length===0){
-            return filteredList    
+            return filteredList;
         }
         else{
-            let newFilteredList=[]
-            for(let i=0;i<filteredList.length;i++){
-                for(let j=0;j<this.sizeFilter.length;j++){
-                    if(filteredList[i].availableSizes.find((each)=>each===this.sizeFilter[j])){
-                        if(!newFilteredList.find((each)=>each===filteredList[i])){
-                        newFilteredList.push(filteredList[i])}
-                    }
-                }
-            }
-            return newFilteredList
+            let newFilteredList=[];
+                filteredList.forEach((eachProduct)=>{
+                  eachProduct.availableSizes.forEach((availableSize)=>{
+                     this.sizeFilter.forEach((eachSize)=>{eachSize})
+                      if(this.sizeFilter.find((each)=>each===availableSize)){
+                          if(!newFilteredList.find((each)=>each===eachProduct)){
+                          newFilteredList.push(eachProduct)}
+                      }
+                  })  
+                })
+            return newFilteredList;
         }
     }
+    
     
     @computed
     get sortAndFilterProducts(){
-        return this.products
-        
+        return this.products;
     }
-    
     
     @computed
     get totalNoOfProductsDisplayed(){
-        return this.products.length
+        return this.products.length;
     }
-
 }
 
-export default ProductStore
+export default ProductStore;

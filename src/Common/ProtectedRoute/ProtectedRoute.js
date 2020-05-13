@@ -3,20 +3,17 @@ import {getAccessToken} from '../../Authentication/utils/StorageUtils.js'
 import React from 'react'
 
 
-class ProtectedRoute extends React.Component{
+ function ProtectedRoute(props){
     
-render(){
-    alert(getAccessToken())
-    const {component,path}=this.props
-    alert(path)
+
+    const {component,path}=props
     if(getAccessToken()){
-       
     return(<Route exact path={path} component={component}/>)}
     else{
         
        return  <Redirect to={{pathname:'/signinPage'}} />
-    }
+    
     }
 }
 
-export {ProtectedRoute}
+export {ProtectedRoute}               

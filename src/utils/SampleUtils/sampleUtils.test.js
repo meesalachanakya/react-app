@@ -1,3 +1,5 @@
+
+
 import {HelloMessage} from './'
 import React,{Component} from 'react'
 
@@ -10,12 +12,13 @@ import React,{Component} from 'react'
     
 //})
 
-
 import {render} from '@testing-library/react'
 
-describe('HelloMessage tests',()=>{
-    it('should render',()=>{
-    const {getByText,debug}=render(<HelloMessage message="Hello World"/>)
+describe('function Returing World text ',()=>{
+    it('should render',()=>   {
+    const {getByText,debug}=render(<HelloMessage message="World"/>)
     getByText(/World/i);
-    debug()
+    
+   // debug()
+    //console.log("4")
 })})

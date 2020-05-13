@@ -5,7 +5,7 @@ const Card=tw.div`flex flex-col items-center w-48 justify-between m-5`
 const Title=tw.div``
 //const Shipping=tw.div`absolute p-1 rounded-sm top-5 bg-black text-xs text-white`
 const Shipping=styled.div`margin-left:auto;
-${tw`z-10 p-1 rounded-sm top-5 bg-black text-xs text-white`}
+${tw`z-0 p-1 rounded-sm top-5 bg-black text-xs text-white`}
 `
 const Image=tw.img`w-48`
 const Cost=tw.div`flex`

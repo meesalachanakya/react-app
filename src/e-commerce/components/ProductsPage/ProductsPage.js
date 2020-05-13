@@ -45,8 +45,6 @@ class ProductsPage extends React.Component{
     
             
     render(){
-        
-        if(getAccessToken()){
         return(<Page>
         <SignoutAndSizeChart>
             <SignoutAndCartIcon>
@@ -67,10 +65,6 @@ class ProductsPage extends React.Component{
             
         </FilterAndProducts>
         </Page>)}
-        else{
-            alert('redirecting')
-        return(<Redirect to={{pathname:'/signinPage'}}   />)
-    }}
 }
 
 export default withRouter(ProductsPage)

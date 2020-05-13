@@ -1,5 +1,6 @@
 import {observable,action} from 'mobx'
 import {bindPromiseWithOnSuccess} from '@ib/mobx-promise'
+import { API_INITIAL } from "@ib/api-constants";
 import {setAccessToken,getAccessToken} from '../../utils/StorageUtils.js'
 
 class AuthStore{
@@ -10,21 +11,19 @@ class AuthStore{
     
     
     constructor(authService){
-    //  this.getUsersSignInAPIStatus=API_INITIAL
+        this.getUsersSignInAPIStatus=API_INITIAL
         this.getUsersSignInAPIError=null
         this.authAPIService=authService
     }
     
     @action.bound
     userSignIn(){
-        
+        return this.signInAPI()
     }
     
     @action.bound
     setUsersSignInAPIResponse(response){
-        //console.log(response[0].access_token)
         setAccessToken(response[0].access_token)
-        this.accessToken=getAccessToken()
     }
     
     @action.bound
@@ -47,10 +46,10 @@ class AuthStore{
         
     }
     
-    @action.bound
-    usersSignOut(){
+  //  @action.bound
+//    usersSignOut(){
         
-    }
+  //  }
 }
 
 export default AuthStore
