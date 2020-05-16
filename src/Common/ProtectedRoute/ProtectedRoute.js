@@ -11,7 +11,7 @@ import React from 'react'
     return(<Route exact path={path} component={component}/>)}
     else{
         
-       return  <Redirect to={{pathname:'/signinPage'}} />
+       return  <Redirect to={{pathname:'/ecommerce-store/signin'}} />
     
     }
 }

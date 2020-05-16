@@ -1,17 +1,18 @@
 import React from "react";
-import {observable,action} from 'mobx';
-import {observer,Provider} from 'mobx-react'
+import { observable, action } from 'mobx';
+import { observer, Provider } from 'mobx-react'
 import {
   HashRouter as Router,
   Switch,
   Route,
-} from "react-router-dom";
-import {Link} from 'react-router-dom'
+}
+from "react-router-dom";
+import { Link } from 'react-router-dom'
 
-import {ProtectedRoute} from './Common/ProtectedRoute'
-import {CarsList} from './components/cars-app/index';
-import {TodoListUpdates} from './components/Todo_List_app';
-import {FormComponents} from './components/assignment-3/form-components';
+import { ProtectedRoute } from './Common/ProtectedRoute'
+import { CarsList } from './components/cars-app/index';
+import { TodoListUpdates } from './components/Todo_List_app';
+import { FormComponents } from './components/assignment-3/form-components';
 import CountriesApp from './components/countries/CountriesApp';
 import Details from './components/countries/details';
 import EmojiGame from './components/EmojiGame/EmojiGame'
@@ -29,6 +30,7 @@ import Home from './components/home';
 import CounterPage from './components/CounterPage'
 import UsersPage from './components/UsersPage'
 import stores from './stores'
+import commonStores from './Common/stores'
 //import themeStore from './stores/ThemeStore'
 
 
@@ -59,16 +61,17 @@ class App extends React.Component {
     }
   }
   */
-  
-  render(){
-  return (
-    <Provider {...stores}>
+
+  render() {
+    // console.log({ ...commonStores })
+    return (
+      <Provider {...stores} {...commonStores}>
     <Router>
     <div>
         
         <Switch>
           
-          <ProtectedRoute path='/ecommerce-store' component={ProductsPage} />
+          <ProtectedRoute path='/ecommerce-store/products' component={ProductsPage} />
         
           <Route path="/counter-page">
             <CounterPage />
@@ -108,7 +111,7 @@ class App extends React.Component {
             <Example/>
           </Route>
           
-          <Route path='/signinPage'>
+          <Route path='/ecommerce-store/signin'>
               <SignInPageRoute/>
           </Route>
       {/*
@@ -127,7 +130,7 @@ class App extends React.Component {
       </div>
     </Router>
     </Provider>
-  );
+    );
   }
 }
 

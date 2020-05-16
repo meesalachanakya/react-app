@@ -1,11 +1,11 @@
 import React from 'react'
-import {action} from 'mobx'
-import {observer} from 'mobx-react'
-import {clearUserSession,getAccessToken} from '../../utils/StorageUtils.js'
-import {withRouter,Redirect} from "react-router-dom";
+import { action } from 'mobx'
+import { observer, inject } from 'mobx-react'
+import { clearUserSession, getAccessToken } from '../../utils/StorageUtils.js'
+import { withRouter, Redirect } from "react-router-dom";
 
-import {productStore} from '../../../Common/stores'
-import {cartStore} from '../../../Common/stores'
+//import {productStore} from '../../../Common/stores'
+//import {cartStore} from '../../../Common/stores'
 import LoadingWrapperWithFailure from '../../../Common/LoadingWrapperWithFailure/LoadingWrapperWithFailure'
 import NoDataView from '../../../Common/LoadingWrapperWithFailure/NoDataView'
 import ProductCart from '../../../e-commerceCart/components/ProductCart'
@@ -14,38 +14,40 @@ import SizeFilter from '../SizeFilter'
 import Header from '../Header'
 import ProductList from '../ProductList'
 
-import {SignoutButton,Page,SignoutAndSizeChart,FilterAndProducts,Cart,SignoutAndCartIcon} from './styledComponents.js'
+import { SignoutButton, Page, SignoutAndSizeChart, FilterAndProducts, Cart, SignoutAndCartIcon } from './styledComponents.js'
 
+@inject('productStore', 'cartStore')
 @observer
-class ProductsPage extends React.Component{
-    componentDidMount(){
+class ProductsPage extends React.Component {
+    componentDidMount() {
         this.doNetworkCalls()
     }
-    
-    doNetworkCalls=()=>{
-        productStore.getProductListAPI()
-    }
-    
-    onClickSignOut=()=>{
-        productStore.clearProductList()
-        clearUserSession()
-        this.props.history.push('/signinPage')
+
+    doNetworkCalls = () => {
+        this.props.productStore.getProductListAPI()
     }
 
-    renderProductList=()=>{
-        const {productList}=productStore
-        if(productList.length===0){
+    onClickSignOut = () => {
+        this.props.productStore.clearProductList()
+        clearUserSession()
+        this.props.history.push('/ecommerce-store/signin')
+    }
+
+    renderProductList = () => {
+        const { productList } = this.props.productStore
+        if (productList.length === 0) {
             return <NoDataView/>;
         }
-        else{
-            return <ProductList onClickAddToCart={cartStore.onClickAddToCart}
-                        list={productStore}/>
-       }
+        else {
+            return <ProductList onClickAddToCart={this.props.cartStore.onClickAddToCart}
+                        list={this.props.productStore}/>
+        }
     }
-    
-            
-    render(){
-        return(<Page>
+
+
+    render() {
+        const { productStore } = this.props
+        return (<Page>
         <SignoutAndSizeChart>
             <SignoutAndCartIcon>
             <SignoutButton onClick={this.onClickSignOut}>signout</SignoutButton>
@@ -64,7 +66,8 @@ class ProductsPage extends React.Component{
             />
             
         </FilterAndProducts>
-        </Page>)}
+        </Page>)
+    }
 }
 
 export default withRouter(ProductsPage)

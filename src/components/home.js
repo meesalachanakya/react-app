@@ -62,7 +62,7 @@ class Home extends React.Component{
               <Link to='/users'>UserList</Link>
             </li>
             <li>
-              <Link to='/ecommerce-store'>E-commerce </Link>
+              <Link to='/ecommerce-store/products'>E-commerce </Link>
             </li>
            {/*
             <li>

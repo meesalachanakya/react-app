@@ -1,29 +1,28 @@
 import React from 'react'
-import {observable} from 'mobx'
-import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCart'
-import {observer} from 'mobx-react'
-import {cartStore} from '../../../Common/stores'
+import { observable } from 'mobx'
+import { observer, inject } from 'mobx-react'
 import CartList from '../CartList'
 import CheckoutButton from '../CheckoutButton'
 import SubTotal from '../SubTotal'
 
-import {ProductsCount,CartIcon,Close,CartView,CheckoutAndSubTotal,ExpendedCart} from './styledComponents.js'
+import { ProductsCount, CartIcon, Close, CartView, CheckoutAndSubTotal, ExpendedCart } from './styledComponents.js'
 
-
+@inject('cartStore')
 @observer
-class ProductCart extends React.Component{
-    @observable shouldDisplayCart=false
-    
-    showCart=()=>{
-        this.shouldDisplayCart=true
+class ProductCart extends React.Component {
+    @observable shouldDisplayCart = false
+
+    showCart = () => {
+        this.shouldDisplayCart = true
     }
-    
-    hideCart=()=>{
-        this.shouldDisplayCart=false
+
+    hideCart = () => {
+        this.shouldDisplayCart = false
     }
-    
-    render(){
-        return this.shouldDisplayCart?<ExpendedCart>
+
+    render() {
+        const { cartStore } = this.props
+        return this.shouldDisplayCart ? <ExpendedCart>
                         <Close onClick={this.hideCart}>x</Close>
                         <CartView>
                         <CartList
@@ -38,8 +37,9 @@ class ProductCart extends React.Component{
                             </CheckoutAndSubTotal>
                         </CartView>
                         </ExpendedCart>
-                    
-                    :(<CartIcon onClick={this.showCart}>
+
+            :
+            (<CartIcon onClick={this.showCart}>
                     <svg xmlns='http://w3.org/2000/svg' className='bg-gray-800 p-1'  width='50' height='50'
                             viewBox="0 0 24 24" fill='none' stroke='white' strokeWidth='2'
                                 strokeLinecap='round' strokeLinejoin='round'>
@@ -50,7 +50,7 @@ class ProductCart extends React.Component{
                         <ProductsCount>{cartStore.noOfProductsInCart}</ProductsCount>
                     </CartIcon>)
     }
-    
+
 }
 
 export default ProductCart
