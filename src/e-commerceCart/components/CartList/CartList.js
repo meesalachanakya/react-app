@@ -1,26 +1,25 @@
 import React from 'react'
-import {action} from 'mobx'
-import {observer} from 'mobx-react'
-import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCart'
+import { action } from 'mobx'
+import { observer } from 'mobx-react'
 import CartItem from '../CartItem'
 
-import {ProductsCount,List,CartDisplay,Logo} from './styledComponents.js'
+import { ProductsCount, List, CartDisplay, Logo } from './styledComponents.js'
 
 @observer
-class CartList extends React.Component{
-    
+class CartList extends React.Component {
+
     @action.bound
-    getProductDetailsById(productId){
-       return this.props.getProductDetails(productId)
+    getProductDetailsById(productId) {
+        return this.props.getProductDetails(productId)
     }
-    
-    render(){
-        let cartProduct=this.props.cartProductList.map((each)=>
-                <CartItem key={Math.random()}
+
+    render() {
+        let cartProduct = this.props.cartProductList.map((each) =>
+            <CartItem key={Math.random()}
                          product={this.getProductDetailsById(each.productId)}
                          onRemoveCartItem={this.props.onRemoveCartItem}
                            cartItemQuantity={each.quantity} />)
-        return(
+        return (
             <CartDisplay>
             <Logo>
                 <svg xmlns='http://w3.org/2000/svg' className='bg-gray-800 p-1'  width='50' height='50'
@@ -34,7 +33,7 @@ class CartList extends React.Component{
             </Logo>
             <List>{cartProduct}</List>
             </CartDisplay>
-            )
+        )
     }
 }
 
