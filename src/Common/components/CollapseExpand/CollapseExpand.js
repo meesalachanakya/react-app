@@ -4,10 +4,10 @@ import tw from 'tailwind.macro'
 
 import { withToggle } from '../../hocs/withToggle/withToggle.js'
 
-const CollapseExpandDiv = tw.div ``
-const Header = tw.div ``
-const Content = tw.div ``
-const Button = tw.div ``
+const CollapseExpandDiv = tw.div `flex flex-col items-center bg-gray-500 w-full p-4`
+const Header = tw.div `text-xl font-bold`
+const Content = tw.div `flex m-1`
+const Button = tw.div `bg-blue-500 text-white p-1 m-1 rounded-md`
 const Expand = tw.div ``
 const List = tw.div ``
 
