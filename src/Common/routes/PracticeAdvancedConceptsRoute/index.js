@@ -1,0 +1,2 @@
+import PracticeAdvancedConceptsRoute from './PracticeAdvancedConceptsRoute.js'
+export default PracticeAdvancedConceptsRoute

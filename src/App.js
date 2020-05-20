@@ -7,7 +7,7 @@ import {
   Route,
 }
 from "react-router-dom";
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 
 import { ProtectedRoute } from './Common/ProtectedRoute'
 import { CarsList } from './components/cars-app/index';
@@ -31,6 +31,7 @@ import CounterPage from './components/CounterPage'
 import UsersPage from './components/UsersPage'
 import stores from './stores'
 import commonStores from './Common/stores'
+import PracticeAdvancedConceptsRoute from './Common/routes/PracticeAdvancedConceptsRoute'
 //import themeStore from './stores/ThemeStore'
 
 
@@ -113,6 +114,10 @@ class App extends React.Component {
           
           <Route path='/ecommerce-store/signin'>
               <SignInPageRoute/>
+          </Route>
+          
+          <Route path='/practice-advanced-concepts'>
+          <PracticeAdvancedConceptsRoute/>
           </Route>
       {/*
         <Route path='/ecommerce-store'>

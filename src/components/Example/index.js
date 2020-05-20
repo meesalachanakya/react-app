@@ -176,7 +176,6 @@ class ListItem extends React.Component {
 
     shouldComponentUpdate(nextProps) {
         console.log(nextProps, "next.props")
-        //  console.log(this.props.value === nextProps.value, this.props.value, '===', nextProps.value)
         if (this.props.value === nextProps.value) {
             return false;
         }

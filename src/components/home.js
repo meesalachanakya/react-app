@@ -1,27 +1,27 @@
 import React from 'react'
-import {Link,Redirect,withRouter} from "react-router-dom";
-import {observer} from 'mobx-react'
-import {observable} from 'mobx'
-import {clearUserSession} from '../utils/StorageUtils.js'
+import { Link, Redirect, withRouter } from "react-router-dom";
+import { observer } from 'mobx-react'
+import { observable } from 'mobx'
+import { clearUserSession } from '../utils/StorageUtils.js'
 
 @observer
-class Home extends React.Component{
- //  @observable xs=false
-   
-/*   
-   signOut=()=>{
-    clearUserSession()
-    this.xs=true
-     //this.props.history.push("/")
-    }
-   
-  */ 
-   render(){
+class Home extends React.Component {
+  //  @observable xs=false
+
+  /*   
+     signOut=()=>{
+      clearUserSession()
+      this.xs=true
+       //this.props.history.push("/")
+      }
+     
+    */
+  render() {
     //  if(this.xs){
-      //   return(<Redirect to={{pathname:'/'}}   />)
+    //   return(<Redirect to={{pathname:'/'}}   />)
     //  }
-        return(
-        <nav>
+    return (
+      <nav>
         <button  onClick={this.signOut}>SignOut</button>
           <ul>
             <li>
@@ -64,12 +64,16 @@ class Home extends React.Component{
             <li>
               <Link to='/ecommerce-store/products'>E-commerce </Link>
             </li>
+            <li>
+              <Link to='/practice-advanced-concepts'>practice_advanced_concepts</Link>
+            </li>
            {/*
             <li>
               <Link to='/'>Login</Link>
             </li>*/}
           </ul>
         </nav>
-   )}
+    )
   }
-export default withRouter( Home)
+}
+export default withRouter(Home)
