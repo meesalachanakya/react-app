@@ -14,7 +14,7 @@ import SizeFilter from '../SizeFilter'
 import Header from '../Header'
 import ProductList from '../ProductList'
 
-import { SignoutButton, Page, SignoutAndSizeChart, FilterAndProducts, Cart, SignoutAndCartIcon } from './styledComponents.js'
+import { SignoutButton, Page, SignoutAndSizeChart, FilterAndProducts, Cart, SignoutAndCartIcon, GotoNextPage, TotalPages, CurrentPage, GotoPreviousPage, Pagination } from './styledComponents.js'
 
 @inject('productStore', 'cartStore')
 @observer

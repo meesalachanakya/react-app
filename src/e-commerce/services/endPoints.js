@@ -1,1 +1,1 @@
-export const productEndPoint='v1/products/'
+export const productEndPoint = 'products?limit=3&offset=0'

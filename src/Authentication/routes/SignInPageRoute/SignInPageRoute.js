@@ -8,16 +8,16 @@ import { getAccessToken } from '../../utils/StorageUtils.js'
 @inject("authStore")
 @observer
 class SignInPageRoute extends React.Component {
-  usernameRef = React.createRef();
-  passwordRef = React.createRef();
-  formRef = React.createRef()
+  //usernameRef = React.createRef();
+  //passwordRef = React.createRef();
+  //formRef = React.createRef()
   @observable username = ''
   @observable password = ''
   @observable errorMessage = ''
 
-  componentDidMount() {
-    this.formRef.current.usernameRef.current.focus()
-  }
+  //componentDidMount() {
+  //  this.formRef.current.usernameRef.current.focus()
+  //}
 
 
   @action.bound
@@ -35,13 +35,13 @@ class SignInPageRoute extends React.Component {
     e.preventDefault();
     if (this.username === "" || this.username === undefined) {
       this.errorMessage = "Please enter username";
-      this.formRef.current.usernameRef.current.focus()
-      ///this.usernameRef.current.focus()
+      //this.formRef.current.usernameRef.current.focus()
+      //this.usernameRef.current.focus()
     }
     else if (this.password === "" || this.password === undefined) {
       this.errorMessage = "Please enter password";
       //this.passwordRef.current.focus()
-      this.formRef.current.passwordRef.current.focus()
+      //this.formRef.current.passwordRef.current.focus()
     }
     else {
       this.errorMessage = "";
@@ -60,7 +60,7 @@ class SignInPageRoute extends React.Component {
       onChangePassword = { this.onChangePassword } 
       onSubmitForm = { this.onSubmitForm } 
       onEnterKeyPress = { this.onEnterKeyPress }
-      ref={this.formRef}
+      //ref={this.formRef}
       //usernameRef={this.usernameRef}
       //passwordRef={this.passwordRef}
       />);
