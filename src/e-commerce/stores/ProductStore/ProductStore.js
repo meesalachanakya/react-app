@@ -86,6 +86,7 @@ class ProductStore {
             case 'decending':
                 filteredList = this.productList.slice().sort((a, b) => (b.price - a.price));
                 break;
+            default :return null
         }
 
         if (this.sizeFilter.length === 0) {
@@ -95,7 +96,7 @@ class ProductStore {
             let newFilteredList = [];
             filteredList.forEach((eachProduct) => {
                 eachProduct.availableSizes.forEach((availableSize) => {
-                    this.sizeFilter.forEach((eachSize) => { eachSize })
+                    //this.sizeFilter.forEach((eachSize) => { eachSize })
                     if (this.sizeFilter.find((each) => each === availableSize)) {
                         if (!newFilteredList.find((each) => each === eachProduct)) {
                             newFilteredList.push(eachProduct)

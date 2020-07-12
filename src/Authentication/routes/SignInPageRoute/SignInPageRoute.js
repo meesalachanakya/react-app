@@ -3,9 +3,8 @@ import React from 'react'
 import { observer, inject } from 'mobx-react'
 import { observable, action } from 'mobx'
 import SignInPage from '../../components/SignInPage'
-import { getAccessToken } from '../../utils/StorageUtils.js'
 
-@inject("authStore")
+@inject('authStore')
 @observer
 class SignInPageRoute extends React.Component {
   //usernameRef = React.createRef();
@@ -19,7 +18,6 @@ class SignInPageRoute extends React.Component {
   //  this.formRef.current.usernameRef.current.focus()
   //}
 
-
   @action.bound
   onChangeUsername(e) {
     this.username = e.target.value;
@@ -29,7 +27,6 @@ class SignInPageRoute extends React.Component {
   onChangePassword(e) {
     this.password = e.target.value;
   }
-
 
   onSubmitForm = async(e) => {
     e.preventDefault();

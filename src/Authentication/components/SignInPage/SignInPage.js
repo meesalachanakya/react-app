@@ -5,7 +5,7 @@ import { inject, observer } from 'mobx-react';
 
 import InputElement from '../../../Common/components/InputElement/InputElement.js'
 
-import { Page, Head, UserName, Password, SignInWindow, Submit, ErrorMsg } from './styledComponents.js';
+import { Page, Head, SignInWindow, Submit, ErrorMsg } from './styledComponents.js';
 
 
 @inject('authStore')

@@ -1,8 +1,7 @@
 import React from 'react'
-import { action } from 'mobx'
 import { observer, inject } from 'mobx-react'
-import { clearUserSession, getAccessToken } from '../../utils/StorageUtils.js'
-import { withRouter, Redirect } from "react-router-dom";
+import { clearUserSession} from '../../utils/StorageUtils.js'
+import { withRouter } from "react-router-dom";
 
 //import {productStore} from '../../../Common/stores'
 //import {cartStore} from '../../../Common/stores'

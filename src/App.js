@@ -1,6 +1,5 @@
 import React from "react";
-import { observable, action } from 'mobx';
-import { observer, Provider } from 'mobx-react'
+import { Provider } from 'mobx-react'
 import {
   HashRouter as Router,
   Switch,
@@ -20,7 +19,6 @@ import TodoApp from './components/TodoMobx/TodoApp'
 import EventApp from './components/EventApp/EventApp'
 import Example from './components/Example'
 import GridMemoryGame from './components/GridGame/GridMemoryGame'
-import LoginPage from './components/LoginPage';
 import SignInPageRoute from './Authentication/routes/SignInPageRoute'
 import ProductsPage from './e-commerce/components/ProductsPage'
 import './components/cars-app/index.css';
@@ -127,10 +125,6 @@ class App extends React.Component {
           <Route exact path="/">
             <Home />
           </Route>
-                  
-          {/*<Route path="/">
-            <LoginPage/>
-          </Route>*/}  
         </Switch>
       </div>
     </Router>
